@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0f;
+  --foreground: #ffffff;
+  --tech-cyan: #00f3ff;
+  --tech-blue: #0066ff;
+  --tech-purple: #bc00ff;
+  --tech-pink: #ff0099;
+  --card-bg: rgba(22, 22, 30, 0.7);
+}
+
+@theme {
+  --color-tech-cyan: var(--tech-cyan);
+  --color-tech-blue: var(--tech-blue);
+  --color-tech-purple: var(--tech-purple);
+  --color-tech-pink: var(--tech-pink);
+  --color-card-bg: var(--card-bg);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 90% 10%, rgba(188, 0, 255, 0.05) 0%, transparent 40%);
+  background-attachment: fixed;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.border-glow-cyan {
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+  border-color: var(--tech-cyan);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f1f2e;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tech-cyan);
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--tech-cyan);
+  box-shadow: 0 0 15px var(--tech-cyan);
+  animation: scanline 2s linear infinite;
+  z-index: 10;
+}
